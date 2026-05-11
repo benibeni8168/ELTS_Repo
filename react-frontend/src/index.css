@@ -45,6 +45,27 @@ code {
    SHARED PAGE STYLES (used across all pages)
    ============================================= */
 
+/* Section Headings */
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  color: var(--text-main);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.section-subtitle {
+  font-size: 1.1rem;
+  margin: 0 auto 60px;
+  max-width: 600px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header .section-title { margin-bottom: 12px; }
+.section-header .section-subtitle { margin: 0 auto 0; }
+
 /* Page Header */
 .page-header {
   padding: 160px 5vw 80px;
@@ -245,6 +266,39 @@ code {
 .read-more-btn:hover {
   background: var(--blue);
   color: #fff;
+}
+
+/* Global Button */
+.btn {
+  display: inline-block;
+  padding: 12px 36px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Space Grotesk', sans-serif;
+  text-decoration: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: #fff;
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Space Grotesk', sans-serif;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
 }
 
 /* CTA Band */
@@ -659,7 +713,11 @@ code {
   font-weight: 500;
   color: var(--text-main);
 }
-select {
+select,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
   padding: 14px;
   background: var(--bg-main);
   border: 1px solid var(--border);
@@ -669,8 +727,14 @@ select {
   font-size: 0.95rem;
   outline: none;
   transition: var(--transition);
+  width: 100%;
 }
-select:focus { border-color: var(--blue); }
+select:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus { border-color: var(--blue); }
+textarea { resize: vertical; }
 .btn-submit {
   background: var(--blue);
   color: #fff;

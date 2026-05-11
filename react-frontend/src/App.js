@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  return null;
-}
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './styles/Navbar.css';
-// Import page components
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -21,6 +14,12 @@ import ServiceCloud from './pages/ServiceCloud';
 import ServiceMigration from './pages/ServiceMigration';
 import ServiceSecurity from './pages/ServiceSecurity';
 import ServiceSoftwareAi from './pages/ServiceSoftwareAi';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);

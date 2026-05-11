@@ -95,7 +95,7 @@ export default function Services() {
       </section>
 
       <section style={{ padding: '100px 5vw', borderBottom: '1px solid var(--border)' }}>
-        <div data-aos="fade-up">
+        <div className="section-header" data-aos="fade-up">
           <h2 className="section-title">Strategic Advisory</h2>
           <p className="section-subtitle">We map technology investments directly to your balance sheet.</p>
         </div>

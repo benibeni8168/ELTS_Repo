@@ -63,6 +63,9 @@
   position: relative;
   z-index: 10;
   max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }
 
 .hero-content h1 {
@@ -110,13 +113,15 @@ section {
   margin-bottom: 16px;
   color: var(--text-main);
   font-weight: 600;
+  text-align: center;
 }
 
 .section-subtitle {
   font-size: 1.1rem;
   color: var(--text-muted);
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
   max-width: 600px;
+  text-align: center;
 }
 
 /* Grid Layout */

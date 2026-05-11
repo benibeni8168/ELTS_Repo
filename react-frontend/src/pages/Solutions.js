@@ -71,7 +71,7 @@ export default function Solutions() {
       </section>
 
       <section style={{ background: 'var(--bg-main)', padding: '100px 5vw', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }} data-aos="fade-up">
+        <div className="section-header" data-aos="fade-up">
           <h2 className="section-title">Execution &amp; Results</h2>
         </div>
 

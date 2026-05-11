@@ -1,0 +1,5 @@
+/* About page styles — shared classes live in index.css */
+.about-page section {
+  padding: 100px 5vw;
+  border-bottom: 1px solid var(--border);
+}
