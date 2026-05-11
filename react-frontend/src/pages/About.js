@@ -1,9 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/About.css';
 
 export default function About() {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="about-page">
+      <button className="floating-back-btn" onClick={() => navigate(-1)} title="Go Back">
+        <i className="fa-solid fa-arrow-left"></i>
+      </button>
+
       <header className="page-header" data-aos="fade-up">
         <h1>Engineering the Future</h1>
         <p>

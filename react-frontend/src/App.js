@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './styles/Navbar.css';
@@ -46,6 +52,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       {/* Navigation */}
       <nav className={scrolled ? 'navbar scrolled' : 'navbar'}>
         <Link to="/" className="logo" onClick={closeMenu}>

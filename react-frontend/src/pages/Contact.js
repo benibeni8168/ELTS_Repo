@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Contact.css';
 import { submitContactForm } from '../services/api';
 
 export default function Contact() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,9 +48,13 @@ export default function Contact() {
 
   return (
     <div className="contact-page" style={{ paddingTop: '100px', background: '#0B0F14', minHeight: '100vh', color: '#F9FAFB' }}>
+      <button className="floating-back-btn" onClick={() => navigate(-1)} title="Go Back">
+        <i className="fa-solid fa-arrow-left"></i>
+      </button>
+
       <section className="contact-section" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 5vw' }}>
         <header style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h1>Get In Touch</h1>
+          <h1>Book a Consultation</h1>
           <p style={{ maxWidth: '760px', margin: '0 auto', color: '#9CA3AF', lineHeight: 1.8 }}>
             Speak directly with an enterprise solutions architect about your infrastructure, security, or automation needs.
           </p>

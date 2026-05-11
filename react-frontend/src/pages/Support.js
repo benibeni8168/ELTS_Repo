@@ -1,50 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Support() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ issueType: '', email: '', description: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setFormData({ issueType: '', email: '', description: '' });
+  };
+
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: '#0B0F14', color: '#F9FAFB' }}>
-      <header style={{ padding: '160px 5vw 80px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3.5rem', marginBottom: '16px' }}>Support</h1>
-        <p style={{ maxWidth: '760px', margin: '0 auto', color: '#9CA3AF', lineHeight: 1.8, fontSize: '1.05rem' }}>
-          Our support team helps keep your infrastructure running securely and reliably. Contact us for operations support, incident response, or managed services.
-        </p>
+    <div>
+      <button className="floating-back-btn" onClick={() => navigate(-1)} title="Go Back">
+        <i className="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <header className="page-header" data-aos="fade-up">
+        <h1>Talk to an Engineer</h1>
+        <p>Skip the automated bots. Submit your details below to connect directly with our technical support team.</p>
       </header>
 
-      <section style={{ padding: '80px 5vw', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gap: '32px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            {[
-              {
-                title: 'Service Desk',
-                description: 'Submit support requests, monitor incident progress, and get expert guidance from our operations team.',
-              },
-              {
-                title: 'Managed Operations',
-                description: 'We help you operate critical environments with security, change control, and 24/7 monitoring.',
-              },
-              {
-                title: 'Incident Response',
-                description: 'Rapid support for production incidents, root cause analysis, and recovery planning across your digital ecosystem.',
-              },
-            ].map((item) => (
-              <div key={item.title} style={{ background: '#111827', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', padding: '30px' }}>
-                <h2 style={{ marginBottom: '14px', color: '#7C3AED' }}>{item.title}</h2>
-                <p style={{ color: '#D1D5DB', lineHeight: 1.8 }}>{item.description}</p>
-              </div>
-            ))}
-          </div>
+      <div className="support-wrapper" data-aos="fade-up" data-aos-delay="100">
 
-          <div style={{ background: '#111827', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)', padding: '34px' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Contact Support</h2>
-            <p style={{ color: '#D1D5DB', lineHeight: 1.8, marginBottom: '18px' }}>
-              Email us at <a href="mailto:sales@teindi.com" style={{ color: '#3B82F6', textDecoration: 'none' }}>sales@teindi.com</a> or use the contact page to request a consultation.
-            </p>
-            <p style={{ color: '#D1D5DB', lineHeight: 1.8 }}>
-              For urgent infrastructure issues, our support desk is available to help restore operations quickly and securely.
-            </p>
+        <div className="trust-banner">
+          <i className="fa-solid fa-shield-halved"></i>
+          <div>
+            <p><strong>Priority Response Active</strong></p>
+            <span>We typically respond to enterprise inquiries within 15–30 minutes. Your data is encrypted and strictly confidential.</span>
           </div>
         </div>
-      </section>
+
+        <form className="support-form" onSubmit={handleSubmit}>
+
+          <div className="input-group">
+            <label>Issue Category</label>
+            <select name="issueType" value={formData.issueType} onChange={handleChange} required>
+              <option value="" disabled>Select the affected system...</option>
+              <option value="Cloud Infrastructure">Cloud Infrastructure / Server Outage</option>
+              <option value="Security">Security Protocol / Access Issue</option>
+              <option value="Software">Software / AI Integration Bug</option>
+              <option value="General">General Inquiry</option>
+            </select>
+          </div>
+
+          <div className="input-group">
+            <label>Work Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="e.g., cto@yourcompany.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Description of Issue</label>
+            <textarea
+              name="description"
+              rows="5"
+              placeholder="Please provide specific details, error codes, or system logs if applicable..."
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn-submit">Submit Ticket Securely</button>
+
+          {submitted && (
+            <div className="success-msg">
+              <i className="fa-solid fa-circle-check"></i> Ticket received. An engineer will email you shortly.
+            </div>
+          )}
+        </form>
+
+      </div>
+
+      <div className="secondary-support" data-aos="fade-up">
+        <button className="support-link"><i className="fa-solid fa-book-open"></i> API Documentation</button>
+        <button className="support-link"><i className="fa-solid fa-file-shield"></i> Security Advisories</button>
+        <button className="support-link"><i className="fa-solid fa-server"></i> System Status</button>
+      </div>
     </div>
   );
 }
