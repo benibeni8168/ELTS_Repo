@@ -1,0 +1,42 @@
+/* --- Strict Enterprise Color System --- */
+:root {
+  --bg-main: #0B0F14;
+  --bg-card: #111827;
+  --bg-card-hover: #1F2937;
+  --blue: #3B82F6;
+  --purple: #7C3AED;
+  --text-main: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --border: rgba(255, 255, 255, 0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .nav-links a, .btn {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

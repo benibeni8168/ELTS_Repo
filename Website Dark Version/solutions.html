@@ -1,0 +1,295 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Our Solutions | Elevator Tech Solutions</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+		<style>
+			:root { --bg-main: #0B0F14; --bg-card: #111827; --bg-card-hover: #1F2937; --blue: #3B82F6; --purple: #7C3AED; --text-main: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(255, 255, 255, 0.08); --transition: all 0.3s ease; }
+			* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+			body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+			h1, h2, h3, h4, .nav-links a, .btn { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.5px; }
+			p { color: var(--text-muted); }
+
+			/* Navbar */
+			nav { position: fixed; top: 0; width: 100%; padding: 20px 5vw; display: flex; justify-content: space-between; align-items: center; background: rgba(11, 15, 20, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; transition: var(--transition); }
+			.logo { display: flex; align-items: center; text-decoration: none; color: var(--text-main); font-size: 1.5rem; font-weight: 700; }
+			.logo i { color: var(--blue); margin-right: 8px; }
+			.nav-menu-wrapper { display: flex; align-items: center; gap: 40px; }
+			.nav-links { list-style: none; display: flex; gap: 30px; }
+			.nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.95rem; transition: var(--transition); opacity: 0.8; }
+			.nav-links a:hover { opacity: 1; color: var(--blue); }
+			.nav-cta { background: var(--blue); color: #fff; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
+			.nav-cta:hover { background: #2563EB; }
+			.menu-toggle { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+
+			/* Header */
+			.page-header { padding: 160px 5vw 80px; text-align: center; border-bottom: 1px solid var(--border); }
+			.page-header h1 { font-size: 3.5rem; margin-bottom: 16px; font-weight: 700; }
+			.page-header p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+			/* Solutions Layout */
+			section { padding: 100px 5vw; border-bottom: 1px solid var(--border); }
+			.solution-block { display: flex; align-items: flex-start; gap: 60px; max-width: 1100px; margin: 0 auto 80px; padding: 40px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); }
+			
+			.solution-content { flex: 1.5; }
+			.solution-content h2 { font-size: 2.2rem; margin-bottom: 16px; color: var(--text-main); }
+			.solution-content p { margin-bottom: 20px; font-size: 1.05rem; }
+			
+			.bullet-list { list-style: none; margin-bottom: 24px; }
+			.bullet-list li { position: relative; padding-left: 24px; margin-bottom: 12px; color: var(--text-main); }
+			.bullet-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-family: monospace; font-weight: bold; }
+			
+			.result-box { background: rgba(59, 130, 246, 0.05); border-left: 3px solid var(--blue); padding: 16px 20px; margin-bottom: 24px; border-radius: 0 6px 6px 0; }
+			.result-box strong { color: var(--blue); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+			.result-box span { color: var(--text-main); font-weight: 500; font-size: 1.1rem; }
+
+			.btn-outline { display: inline-block; padding: 12px 24px; border: 1px solid var(--border); color: var(--text-main); border-radius: 6px; text-decoration: none; font-weight: 500; transition: var(--transition); }
+			.btn-outline:hover { background: var(--blue); border-color: var(--blue); }
+
+			/* Case Studies */
+			.case-studies-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+			.case-card { background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid var(--border); }
+			.case-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--text-main); }
+			.case-text { margin-bottom: 15px; font-size: 0.95rem; }
+			.case-text strong { color: var(--text-main); }
+			.case-metric { display: inline-block; background: var(--blue); color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; margin-top: 10px; }
+
+			/* Footer */
+			footer { padding: 80px 5vw 40px; background: var(--bg-main); }
+			.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto 60px; }
+			.footer-col h4 { color: var(--text-main); margin-bottom: 24px; font-size: 1.1rem; }
+			.footer-col a { color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 12px; transition: var(--transition); }
+			.footer-col a:hover { color: var(--blue); }
+			.footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+
+			@media (max-width: 900px) { .nav-menu-wrapper { display: none; } .menu-toggle { display: block; } .solution-block { flex-direction: column; padding: 30px; } }
+			
+			/* --- Dropdown Navigation (HPE Style) --- */
+			.nav-links li { position: relative; padding: 10px 0; }
+			
+			.dropdown-menu {
+				position: absolute; top: 100%; left: 0;
+				background: rgba(11, 15, 20, 0.95); backdrop-filter: blur(12px);
+				border: 1px solid var(--border); border-top: 2px solid var(--blue);
+				border-radius: 0 0 8px 8px; min-width: 240px; padding: 10px 0;
+				opacity: 0; visibility: hidden; transform: translateY(15px);
+				transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column;
+			}
+
+			.nav-links li:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+			.dropdown-menu a {
+				padding: 12px 24px; font-size: 0.9rem; display: block;
+				color: var(--text-muted); font-family: 'Inter', sans-serif; border-left: 2px solid transparent;
+			}
+
+			.dropdown-menu a:hover { color: #fff; background: rgba(59, 130, 246, 0.05); border-left: 2px solid var(--blue); padding-left: 30px; }
+			
+			/* --- Floating Back Button --- */
+			.floating-back-btn {
+				position: fixed;
+				bottom: 40px;
+				right: 40px;
+				z-index: 1000;
+				background: rgba(17, 24, 39, 0.8);
+				backdrop-filter: blur(10px);
+				border: 1px solid var(--border);
+				color: var(--text-muted);
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.2rem;
+				text-decoration: none;
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+				transition: var(--transition);
+			}
+
+			.floating-back-btn:hover {
+				color: #fff;
+				background: var(--blue);
+				border-color: var(--blue);
+				transform: scale(1.1) translateY(-5px);
+			}
+
+			@media (max-width: 900px) {
+				.floating-back-btn { bottom: 20px; left: 20px; width: 45px; height: 45px; }
+		</style>
+	</head>
+	<body>
+	   <a href="javascript:history.back()" class="floating-back-btn" title="Go Back"><i class="fa-solid fa-arrow-left"></i></a>
+
+		<nav id="navbar">
+			<a href="newindex.html" class="logo"><img src="logo.png" width="270" height="auto"></a>
+			<div class="menu-toggle" style="display: none;"><i class="fa-solid fa-bars"></i></div>
+			<div class="nav-menu-wrapper">
+				<ul class="nav-links">
+					<li><a href="about.html">Company</a></li>
+					<li>
+						<a href="solutions.html">Solutions <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 5px;"></i></a>
+						<div class="dropdown-menu">
+							<a href="#">System Integration</a>
+							<a href="#">Cloud Architecture</a>
+							<a href="#">AI Automation</a>
+						</div>
+					</li>
+					<li>
+						<a href="services.html">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 5px;"></i></a>
+						<div class="dropdown-menu">
+							<a href="service-cloud.html">Hybrid Cloud</a>
+							<a href="service-migration.html">Cloud Migration</a>
+							<a href="service-security.html">Cyber Security</a>
+							<a href="service-software-ai.html">Intelligent Software</a>
+						</div>
+					</li>
+				</ul>
+				<a href="newindex.html#contact" class="nav-cta">Book a Consultation</a>
+			</div>
+		</nav>
+
+		<header class="page-header">
+			<div data-aos="fade-up">
+				<h1>Deployable Solutions</h1>
+				<p>We solve massive operational bottlenecks through deep system integration and applied artificial intelligence.</p>
+			</div>
+		</header>
+
+		<section>
+			
+			<div class="solution-block" data-aos="fade-up">
+				<div class="solution-content">
+					<h2>Enterprise System Integration</h2>
+					<p>Data silos destroy enterprise efficiency. We create a unified mesh across your entire technology stack, ensuring your CRM, ERP, and internal databases communicate flawlessly in real-time.</p>
+					<ul class="bullet-list">
+						<li>Legacy system API modernization</li>
+						<li>Multi-cloud data orchestration</li>
+						<li>Automated cross-platform syncing</li>
+					</ul>
+					<div class="result-box">
+						<strong>Average Client Result</strong>
+						<span>Eliminated data silos, improving executive reporting speed by 3x.</span>
+					</div>
+					<a href="contact.html" class="btn-outline">Discuss Your Integration Setup</a>
+				</div>
+			</div>
+
+			<div class="solution-block" data-aos="fade-up">
+				<div class="solution-content">
+					<h2>Applied AI & Workflow Automation</h2>
+					<p>We operationalize AI to handle heavy lifting. Rather than generic chatbots, we embed custom machine learning directly into your operational pipelines to handle complex, repetitive tasks automatically.</p>
+					<ul class="bullet-list">
+						<li><strong>Finance:</strong> Automated compliance auditing and anomaly detection.</li>
+						<li><strong>Logistics:</strong> Real-time predictive maintenance models for fleets.</li>
+						<li><strong>Operations:</strong> Intelligent Document Processing (IDP) for rapid invoice and contract sorting.</li>
+					</ul>
+					<div class="result-box">
+						<strong>Average Client Result</strong>
+						<span>Reduced manual processing time by 60%, saving 400+ hours per month.</span>
+					</div>
+					<a href="contact.html" class="btn-outline">Get an AI Automation Demo</a>
+				</div>
+			</div>
+
+			<div class="solution-block" data-aos="fade-up">
+				<div class="solution-content">
+					<h2>Cloud-Native Software Engineering</h2>
+					<p>Off-the-shelf SaaS rarely fits a uniquely complex business model. We engineer highly secure, scalable, bespoke applications designed specifically to run in high-performance cloud environments.</p>
+					<ul class="bullet-list">
+						<li>Microservices architecture for zero-downtime updates</li>
+						<li>Secure DevSecOps deployment pipelines</li>
+						<li>High-performance internal portals and dashboards</li>
+					</ul>
+					<div class="result-box">
+						<strong>Average Client Result</strong>
+						<span>Replaced 4 fragmented legacy tools with 1 unified, high-speed platform.</span>
+					</div>
+					<a href="contact.html" class="btn-outline">Talk to a Lead Engineer</a>
+				</div>
+			</div>
+
+		</section>
+
+		<section style="background: var(--bg-main);">
+			<div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+				<h2 style="font-size: 2.5rem; font-family: 'Space Grotesk', sans-serif; color: var(--text-main);">Execution & Results</h2>
+			</div>
+
+			<div class="case-studies-wrap">
+				<div class="case-card" data-aos="fade-up">
+					<h3>Global Supply Chain Corp</h3>
+					<p class="case-text"><strong>Problem:</strong> Processing thousands of international shipping manifests manually led to severe delays and high error rates.</p>
+					<p class="case-text"><strong>Solution:</strong> ELTS deployed an Intelligent Document Processing (IDP) AI model integrated directly into their ERP.</p>
+					<div class="case-metric">Result: 94% faster processing with zero data-entry errors.</div>
+				</div>
+
+				<div class="case-card" data-aos="fade-up" data-aos-delay="100">
+					<h3>Regional Retail Bank</h3>
+					<p class="case-text"><strong>Problem:</strong> Nightly batch processing on aging on-premise servers took 8 hours, threatening opening-bell operations.</p>
+					<p class="case-text"><strong>Solution:</strong> We architected a secure AWS Hybrid Cloud migration, optimizing their databases for modern cloud compute.</p>
+					<div class="case-metric">Result: Batch processing reduced from 8 hours to 45 minutes.</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="footer-grid">
+				<div class="footer-col">
+					 <div> <h4 style="font-family: 'Space Grotesk', sans-serif;margin-left: -14px; font-size: 1.3rem;"><a href="newindex.html" class="logo"><img src="logo.png" width="170" height="auto"></a></h4>
+							 <p style="margin-bottom: 20px;margin-left:0px;margin-top: -23px; font-size: 0.95rem;">Building and securing the next generation of enterprise infrastructure.</p>
+					  </div>
+					<div style="display: flex; gap: 15px;">
+						<a href="https://www.linkedin.com/company/YOUR-LINKEDIN-PAGE"><i class="fa-brands fa-linkedin" style="font-size: 1.2rem;"></i></a>
+						<a href="https://twitter.com/YOUR-TWITTER-HANDLE"><i class="fa-brands fa-x-twitter" style="font-size: 1.2rem;"></i></a>
+						<a href="https://www.instagram.com/YOUR-INSTAGRAM-HANDLE"><i class="fa-brands fa-instagram" style="font-size: 1.2rem;"></i></a>
+						<a href="https://www.youtube.com/@Teinditech"><i class="fa-brands fa-youtube" style="font-size: 1.2rem;"></i></a>
+					</div>
+				</div>
+				<div class="footer-col">
+					<h4>Solutions</h4>
+					<a href="solutions.html">System Integration</a>
+					<a href="services.html">Cloud Architecture</a>
+					<a href="services.html">AI Automation</a>
+				</div>
+				<div class="footer-col">
+					<h4>Services</h4>
+					<a href="service-cloud.html">Hybrid Cloud</a>
+					<a href="service-migration.html">Cloud Architecture</a>
+					<a href="service-security.html">Cyber Security</a>
+					<a href="service-software-ai.html">Intelligent Software</a>
+					
+				</div>
+				<div class="footer-col">
+					<h4>Company</h4>
+					<a href="newindex.html">HomePage</a>
+					<a href="case-studies.html">Case Studies</a>
+					<a href="support.html">Support</a>
+					<a href="contact.html">Contact</a>
+				</div>
+				<div class="footer-col">
+					<h4>Reach Us</h4>
+					<a href="mailto:sales@teindi.com"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> sales@teindi.com</a>
+					<!-- Replace your old location paragraph with this clickable version -->
+					<a href="https://www.google.com/maps/place/Manish+Global+Mall/@28.560376,77.059367,1980m/data=!3m1!1e3!4m6!3m5!1s0x390d1b6685d8affd:0x94de45284c469b11!8m2!3d28.5603764!4d77.0593668!16s%2Fg%2F11v3r7vcfm?hl=en&entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px; display: block; text-decoration: none; transition: 0.3s;"><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> T-21/22 Manish Global Mall, New Delhi 110077</a>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2026 Elevator Tech Solutions LLP. All Rights Reserved.</p>
+			</div>
+		</footer>
+
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init({ once: true, offset: 50, duration: 400, easing: 'ease-in-out' });
+		</script>
+	</body>
+	</html>
