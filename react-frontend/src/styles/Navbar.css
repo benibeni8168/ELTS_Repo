@@ -29,10 +29,12 @@
   font-family: 'Space Grotesk', sans-serif;
   gap: 8px;
   transition: var(--transition);
+  height: 40px;
 }
 
 .logo i {
   color: var(--blue);
+  font-size: 1.4rem;
 }
 
 .logo:hover {
@@ -83,11 +85,27 @@
 
 .menu-toggle {
   display: none;
-  font-size: 1.5rem;
-  color: var(--text-main);
-  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
   background: none;
   border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2.5px;
+  background: var(--text-main);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.menu-toggle:hover span {
+  background: var(--blue);
 }
 
 /* Dropdown Navigation */
@@ -141,48 +159,194 @@
   padding-left: 30px;
 }
 
+.desktop-nav-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-main);
+  opacity: 0.85;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+..desktop-nav-link:hover {
+  color: var(--blue);
+  opacity: 1;
+}
+
+.nav-section-toggle,
+.mobile-only {
+  display: none;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 5vw;
+  }
+
+  .navbar.scrolled {
+    padding: 10px 5vw;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    gap: 6px;
+    height: 35px;
+  }
+
+  .logo i {
+    font-size: 1.1rem;
+  }
+
   .nav-links {
     gap: 15px;
     font-size: 0.9rem;
   }
 
-  .nav-menu-wrapper {
-    gap: 20px;
+  .menu-toggle,
+  .nav-section-toggle.mobile-only {
+    display: flex !important;
+    touch-action: manipulation;
   }
 
-  .menu-toggle {
-    display: block;
+  .desktop-nav-link {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
   }
 
   .nav-menu-wrapper {
     position: absolute;
-    top: 60px;
+    top: 55px;
     left: 0;
     right: 0;
-    background: rgba(11, 15, 20, 0.95);
+    background: rgba(11, 15, 20, 0.98);
     backdrop-filter: blur(12px);
     flex-direction: column;
-    padding: 20px;
-    gap: 15px;
+    padding: 18px 18px 14px;
+    gap: 0;
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
     max-height: 0;
     overflow: hidden;
-    transition: var(--transition);
+    transition: transform 0.32s ease, opacity 0.28s ease, max-height 0.32s ease;
+    will-change: transform, opacity, max-height;
     border-bottom: 1px solid var(--border);
   }
 
   .nav-menu-wrapper.mobile-open {
-    max-height: 500px;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 100vh;
   }
 
   .nav-links {
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-section-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding: 12px 0 10px;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .nav-section-toggle span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--text-main);
+    border-bottom: 2px solid var(--text-main);
+    transform: rotate(45deg);
+    transition: transform 0.25s ease;
+    margin-left: auto;
+  }
+
+  .section-arrow.open {
+    transform: rotate(225deg);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  .nav-links a:hover {
+    color: var(--blue);
+  }
+
+  .dropdown-menu {
+    position: static;
+    background: rgba(59, 130, 246, 0.05);
+    border: none;
+    border-radius: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transform-origin: top;
+    box-shadow: none;
+    padding: 0 0 0 20px;
+    transition: max-height 0.32s ease, opacity 0.28s ease;
+    will-change: max-height, opacity;
+  }
+
+  .nav-links li.expanded .dropdown-menu {
+    max-height: 480px;
+    opacity: 1;
+    visibility: visible;
   }
 
   .nav-cta {
     width: 100%;
     text-align: center;
+    margin-top: 12px;
+  }
+
+  .dropdown-menu a {
+    padding: 10px 0;
+    font-size: 0.9rem;
+    border-left: none;
+  }
+
+  .dropdown-menu a:hover {
+    border-left: none;
+    padding-left: 0;
   }
 }
